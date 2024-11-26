@@ -1,0 +1,202 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    //ViewData["Title"] = "Admin";
+       
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CSR MANAGEMENT</title>
+    <link rel="shortcut icon" href="~/assets/images/favicon.png">
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="~/assets/css/dashlite.css?ver=2.7.0">
+    <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=2.7.0">
+    <link id="skin-default" rel="stylesheet" href="~/assets/css/custom.css">
+</head>
+<body class="nk-body bg-lighter npc-general has-sidebar ">
+    <div class="nk-app-root">
+        <!-- main @@s -->
+        <div class="nk-main ">
+            <!-- sidebar @@s -->
+            <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
+                <div class="nk-sidebar-element nk-sidebar-head">
+                    <div class="nk-menu-trigger">
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                    </div>
+                    <div class="nk-sidebar-brand">
+                        <a asp-controller="Home" asp-action="Index" class="logo-link nk-sidebar-logo">
+                            <img class="logo-light logo-img" src="~/assets/images/logo.png" srcset="~/assets/images/logo2x.png 2x" alt="logo">
+                            <img class="logo-dark logo-img" src="~/assets/images/logo-dark.png" srcset="~/assets/images/logo-dark2x.png 2x" alt="logo-dark">
+                        </a>
+                    </div>
+                </div><!-- .nk-sidebar-element -->
+                <div class="nk-sidebar-element nk-sidebar-body">
+                    <div class="nk-sidebar-content">
+                        <div class="nk-sidebar-menu" data-simplebar>
+                            <ul class="nk-menu">
+                                @*  <li class="nk-menu-heading">
+                                <h6 class="overline-title text-primary-alt">Home</h6>
+                                </li> *@
+                                <li class="nk-menu-item">
+                                    <a href="/admin/home" class="nk-menu-link"><span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span><span class="nk-menu-text">Dashboard</span></a>
+                                </li>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-briefcase"></em></span>
+                                        <span class="nk-menu-text">Clients</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="/Admin/Client/Create" class="nk-menu-link"><span class="nk-menu-text">New Client</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a asp-Controller="Client" asp-action="Index" class="nk-menu-link"><span class="nk-menu-text">Manage Clients</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
+                                        <span class="nk-menu-text">Projects</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="/Admin/Project/Create" class="nk-menu-link"><span class="nk-menu-text">New Project</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="/Admin/Project/Index" class="nk-menu-link"><span class="nk-menu-text">Manage Project</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-building-fill"></em></span>
+                                        <span class="nk-menu-text">Project Agency</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="#" class="nk-menu-link"><span class="nk-menu-text">New Agency</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="#" class="nk-menu-link"><span class="nk-menu-text">Manage Agency</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list-fill"></em></span>
+                                        <span class="nk-menu-text">MIS Reports</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="#" class="nk-menu-link"><span class="nk-menu-text">Summary Report</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nk-menu-item">
+                                    <a href="/Account/LogOut" class="nk-menu-link "><span class="nk-menu-icon"><em class="icon ni ni-signout"></em></span><span class="nk-menu-text">Sign Out</span></a>
+                                </li>
+
+                                @* <li class="nk-menu-item has-sub">
+                                <a href="#" class="nk-menu-link nk-menu-toggle">
+                                <span class="nk-menu-icon"><em class="icon ni ni-building-fill"></em></span>
+                                <span class="nk-menu-text">Clients</span>
+                                </a>
+                                <ul class="nk-menu-sub">
+                                <li class="nk-menu-item">
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Manage Albums</span></a>
+                                </li>
+                                <li class="nk-menu-item">
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Manage Photos</span></a>
+                                </li>
+                                </ul>
+                                </li> *@
+                            </ul><!-- .nk-menu -->
+                        </div><!-- .nk-sidebar-menu -->
+                    </div><!-- .nk-sidebar-content -->
+                </div><!-- .nk-sidebar-element -->
+            </div>
+            <!-- sidebar @@e -->
+            <!-- wrap @@s -->
+            <div class="nk-wrap ">
+                <!-- main header @@s -->
+                <div class="nk-header nk-header-fixed is-light">
+                    <div class="container-fluid">
+                        <div class="nk-header-wrap">
+                            <div class="nk-menu-trigger d-xl-none ml-n1">
+                                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                            </div>
+                            <div class="nk-header-brand d-xl-none">
+                                <a asp-controller="Home" asp-action="Index" class="logo-link">
+                                    <img class="logo-light logo-img" src="~/assets/images/logo.png" srcset="~/assets/images/logo2x.png 2x" alt="logo">
+                                    <img class="logo-dark logo-img" src="~/assets/images/logo-dark.png" srcset="~/assets/images/logo-dark2x.png 2x" alt="logo-dark">
+                                </a>
+                            </div><!-- .nk-header-brand -->
+                            <div class="nk-header-news d-none d-xl-block">
+                                <div class="nk-news-list">
+                                </div>
+                            </div><!-- .nk-header-news -->
+                            @await Component.InvokeAsync("UserInfo")
+                        </div><!-- .nk-header-wrap -->
+                    </div><!-- .container-fliud -->
+                </div>
+                <!-- main header @@e -->
+                <!-- content @@s -->
+                <div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content @@e -->
+                <!-- footer @@s -->
+                <div class="nk-footer">
+                    <div class="container-fluid">
+                        <div class="nk-footer-wrap">
+                            <div class="nk-footer-copyright">
+                                &copy; 2024 CSR Management D & D by <a href="https://v2web.in" target="_blank">V2web</a>
+                            </div>
+                            <div class="nk-footer-links">
+                                <ul class="nav nav-sm">
+                                    <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer @@e -->
+            </div>
+            <!-- wrap @@e -->
+        </div>
+        <!-- main @@e -->
+    </div>
+    <!-- app-root @@e -->
+    <!-- JavaScript -->
+    <script src="~/assets/js/bundle.js?ver=2.7.0"></script>
+    <script src="~/assets/js/scripts.js?ver=2.7.0"></script>
+    <script src="~/assets/js/charts/gd-default.js?ver=2.7.0"></script>
+    <script src="~/assets/js/libs/datatable-btns.js?ver=2.7.0"></script>
+    <script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script type="text/javascript">CKEDITOR.replace('#editor1');</script>
+
+
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        /*window.onload = function () { NioApp.Toast('Success', 'success', { position: 'top-right' }); };*/
+        @Html.Raw(TempData["Message"])
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

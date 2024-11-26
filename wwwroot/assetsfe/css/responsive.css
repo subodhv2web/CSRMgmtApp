@@ -1,0 +1,31 @@
+@media (max-width: 1366px){
+    .menu_main:before { width: 80.9vw;}
+    .top_right .login_signup:before{  width: 10vw;}
+    .whatext{ min-height: 168px;}
+
+}
+
+@media (max-width: 480px){
+    .top_right .social_top{ display: none;}
+    .top_left ul {gap: 5px; flex-wrap: wrap;  padding: 0; }
+    .top_right .login_signup{background: #308ac5;}
+    .top_right .login_signup:before{ display: none;}
+    .topbar_section{ background: #d3d9de;}
+    .topbar_main:before{ display: none;}
+    .top_right .login_signup ul{ padding: 0;}
+    .menu_main:before{ display: none;}
+    .menu_main:after{ display: none;}
+    .header_mid{ flex-wrap: wrap;}
+    .header_midcontent{flex-wrap: wrap;}
+    .header_leftlogo{ display: none;}
+    .header_midcontentleft{ border-right:none; margin-bottom: 80px;}
+    .stellarnav.mobile {position: absolute; text-align: right; margin-top: -70px; }
+    .capction{   left: 0;  right: 0;  margin: auto; max-width: 70%;   height: 82px;padding: 15px;}
+    .capction .capctitle{font-size: 14px; } 
+    .capction .capcdiscr{ font-size: 14px;}
+    .doyou_stillleft { width: 60%;  }
+    .doyou_stillleft p{ line-height: 26px;}
+    .footer_menu{ display: inherit;column-count: 2;   padding: 0;}
+    .copy_main{ flex-wrap: wrap;}
+    .header_midcontentlogo{  position: absolute; left: 18px; margin-bottom: -110px;}
+}

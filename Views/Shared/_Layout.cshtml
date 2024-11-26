@@ -1,0 +1,496 @@
+﻿@using Microsoft.AspNetCore.Http
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@{
+    ViewData["Title"] = "Seastar Consultancy";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SEASTAR</title>
+    <link href="/assetsfe/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assetsfe/css/stellarnav.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/assetsfe/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assetsfe/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/assetsfe/css/lightcase.css" rel="stylesheet" type="text/css">
+    <link href="/assetsfe/css/seastar.css" rel="stylesheet">
+    <link href="/assetsfe/css/responsive.css" rel="stylesheet">
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
+    <meta name="_csrf" content="${_csrf.token}" />
+</head>
+<body>
+
+    <header class="header_section">
+        <div class="topbar_section">
+            <div class="container">
+                <div class="topbar_main">
+                    <div class="top_left">
+                        <ul>
+                            <li>
+                                <i class="bi bi-envelope"></i> Email : <a href="mailto:support@synergyseastar.in">support@synergyseastar.in</a>
+                            </li>/
+                            <li>
+                                <i class="bi bi-phone"></i> Call Us: <a href="tel:918800963349">+91-8800963349</a>
+                            </li>
+                            <li>
+                                <form method="post" asp-action="SplitPay" asp-controller="Home">
+                                    <button type="submit" name="action" value="ClickMe">Click Me</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="top_right">
+                        <ul class="social_top">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="bi bi-twitter-x"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <div class="login_signup">
+                            <ul>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Signup</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_midsection">
+            <div class="container">
+                <div class="header_mid">
+                    <div class="header_leftlogo"><a href="#"><img src="/assetsfe/images/synergy.png"></a></div>
+                    <div class="header_right">
+                        <div class="header_midcontent">
+                            <div class="header_midcontentleft">
+                                <h5>Registration for the Synergy Maritime Entrance Test 2024 is CLOSED.</h5>
+                                <p>Date of examination 10th March 2024.  |  <a href="#">Click the ‘Login’ button to download your admit card.</a></p>
+                            </div>
+                            <div class="header_midcontentlogo">
+                                <a href="#"><img src="/assetsfe/images/seastar.png"></a>
+                            </div>
+                        </div>
+                        @await Component.InvokeAsync("Megamenu")
+                        @* <div class="menu_main">
+                            <div class="stellarnav">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li>
+                                        <a href="#">About Us</a>
+                                        <ul>
+                                            <li><a href="#">Products</a></li>
+                                            <li><a href="#">Documents</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Products</a></li>
+                                    <li><a href="#">Documents</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Model Question Papers  </a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div> *@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+   
+    @RenderBody()
+    @* <section class="home_slider">
+        <div class="owl-carousel fullslide owl-theme">
+            <div class="item">
+                <div class="home_slide">
+                    <img src="/assetsfe/images/slide-1.png" alt="">
+                    <div class="capction">
+                        <div class="capctitle">SYNERGY MARITIME RECRUITMENT SERVICES PRIVATE LIMITED</div>
+                        <div class="capcdiscr">Powered by Seastar Consultancy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="home_slide">
+                    <img src="/assetsfe/images/slide-2.png" alt="">
+                    <div class="capction">
+                        <div class="capctitle">SYNERGY MARITIME RECRUITMENT SERVICES PRIVATE LIMITED</div>
+                        <div class="capcdiscr">Powered by Seastar Consultancy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="home_slide">
+                    <img src="/assetsfe/images/slide-3.png" alt="">
+                    <div class="capction">
+                        <div class="capctitle">SYNERGY MARITIME RECRUITMENT SERVICES PRIVATE LIMITED</div>
+                        <div class="capcdiscr">Powered by Seastar Consultancy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about_section about_bg pt-60 pb-60">
+        <div class="home_aboutmain">
+            <div class="container">
+                <div class="row gy-3">
+                    <div class="col-md-6">
+                        <div class="home_aboutimg">
+                            <img src="/assetsfe/images/about.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="home_abouttext">
+                            <p class="organ"><span></span> About our Organisation</p>
+                            <h1><span class="story">Story</span> ABOUT <span class="consult">Seastar Consultancy</span></h1>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius, eget sodales dolor commodo. In iaculis vel neque a facilisis. Nam ex arcu, rhoncus sed posuere eget, hendrerit non lectus. Mauris feugiat erat ut nisl imperdiet,
+                                quis posuere leo auctor. Nulla lacinia eros in urna aliquet, vitae aliquam arcu gravida. Nulla eu augue mi.
+                            </p>
+                            <a href="#" class="readmore">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_section whatwe_bg pt-60 pb-60">
+        <div class="home_whatwedomain">
+            <div class="container">
+                <div class="whatwe_title">
+                    <p>Seastar Services</p><h2><span>WHAT</span> WE DO</h2>
+                </div>
+                <div class="owl-carousel whatwedo owl-theme">
+                    <div class="item">
+                        <div class="whatwe_slide">
+                            <img src="/assetsfe/images/what-1.png">
+                            <div class="whatext">
+                                Conduct online
+                                examinations.
+                            </div>
+                            <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="whatwe_slide">
+                            <img src="/assetsfe/images/what-2.png">
+                            <div class="whatext">
+                                Identifying training
+                                needs and aptitude of
+                                applicants/employees
+                            </div>
+                            <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="whatwe_slide">
+                            <img src="/assetsfe/images/what-3.png">
+                            <div class="whatext">
+                                Continuous Comprehensive
+                                Evaluation of applicants to
+                                surface out Knowledge,
+                                Functional and Self-
+                                Management Skills.
+                            </div>
+                            <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="whatwe_slide">
+                            <img src="/assetsfe/images/what-1.png">
+                            <div class="whatext">
+                                Conduct online
+                                examinations.
+                            </div>
+                            <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_section  pt-60 pb-60">
+        <div class="home_seastarprod">
+            <div class="container">
+                <div class="row gy-3">
+                    <div class="col-md-4">
+                        <div class="home_seastarprodleft">
+                            <div class="title_seastar">
+                                Seastar <span>PRODUCTS</span>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius, eget sodales dolor commodo.
+                                In iaculis vel neque a facilisis. Nam ex arcu, rhoncus sed posuere eget, hendrerit non lectus.
+                            </p>
+                            <a href="#" class="readmore">Read More</a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row gy-3">
+                            <div class="col-md-6">
+                                <div class="skiltest_main">
+                                    <div class="skil_icon"><img src="/assetsfe/images/skil-icon.png"></div>
+                                    <div class="skil_text">
+                                        <h4>SkillTest, AI based online test</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skiltest_main">
+                                    <div class="skil_icon"><img src="/assetsfe/images/skil-icon.png"></div>
+                                    <div class="skil_text">
+                                        <h4>SkillTest, AI based online test</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skiltest_main">
+                                    <div class="skil_icon"><img src="/assetsfe/images/skil-icon.png"></div>
+                                    <div class="skil_text">
+                                        <h4>SkillTest, AI based online test</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skiltest_main">
+                                    <div class="skil_icon"><img src="/assetsfe/images/skil-icon.png"></div>
+                                    <div class="skil_text">
+                                        <h4>SkillTest, AI based online test</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus lectus sed ligula varius</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_section latestnews_bg pt-60 pb-60">
+        <div class="home_whatwedomain">
+            <div class="container">
+                <div class="latestnews_title">
+                    <p>Recent News / Events</p><h2>Latest <span>News & Events</span></h2>
+                </div>
+                <div class="owl-carousel latestnews owl-theme">
+                    <div class="item">
+                        <div class="latestnews_slide">
+                            <img src="/assetsfe/images/new-1.png">
+                            <div class="latestnewstext">
+                                <div class="event_date">13<span>July 24</span></div>
+                                <ul class="categery_news">
+                                    <li>Hindustan Times  |  News</li>
+                                    <li>| </li>
+                                    <li>News</li>
+                                </ul>
+                                Formal and informal training, CV review and mock interviews
+                                <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="latestnews_slide">
+                            <img src="/assetsfe/images/new-2.png">
+                            <div class="latestnewstext">
+                                <div class="event_date">13<span>July 24</span></div>
+                                <ul class="categery_news">
+                                    <li>Hindustan Times  |  News</li>
+                                    <li>| </li>
+                                    <li>News</li>
+                                </ul>
+                                Formal and informal training, CV review and mock interviews
+                                <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="latestnews_slide">
+                            <img src="/assetsfe/images/new-3.png">
+                            <div class="latestnewstext">
+                                <div class="event_date">13<span>July 24</span></div>
+                                <ul class="categery_news">
+                                    <li>Hindustan Times  |  News</li>
+                                    <li>| </li>
+                                    <li>News</li>
+                                </ul>
+                                Formal and informal training, CV review and mock interviews
+                                <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="latestnews_slide">
+                            <img src="/assetsfe/images/new-1.png">
+                            <div class="latestnewstext">
+                                <div class="event_date">13<span>July 24</span></div>
+                                <ul class="categery_news">
+                                    <li>Hindustan Times  |  News</li>
+                                    <li>| </li>
+                                    <li>News</li>
+                                </ul>
+                                Formal and informal training, CV review and mock interviews
+                                <a href="#">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_section  pt-90 pb-60">
+        <div class="home_photogallery">
+            <div class="container">
+                <div class="image_title">
+                    <h2><span>Image</span>  Gallery</h2>
+                </div>
+                <div class="row gy-3">
+                    <div class="col-md-4">
+                        <div class="imag_photo">
+                            <a href="/assetsfe/images/gal-1.png" id="example2" class="showcase" data-rel="lightcase:myCollection:slideshow" title="Cayton Heath">
+                                <img src="/assetsfe/images/gal-1.png">
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row gy-3">
+                            <div class="col-md-12">
+                                <div class="imag_photo">
+                                    <a href="/assetsfe/images/gal-2.png" id="example2" class="showcase" data-rel="lightcase:myCollection:slideshow" title="Cayton Heath">
+                                        <img src="/assetsfe/images/gal-2.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="imag_photo">
+                                    <a href="/assetsfe/images/gal-3.png" id="example2" class="showcase" data-rel="lightcase:myCollection:slideshow" title="Cayton Heath">
+                                        <img src="/assetsfe/images/gal-3.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="imag_photo">
+                                    <a href="/assetsfe/images/gal-4.png" id="example2" class="showcase" data-rel="lightcase:myCollection:slideshow" title="Cayton Heath">
+                                        <img src="/assetsfe/images/gal-4.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <center><a href="#" class="readmore">VIEW ALL IMAGES</a></center>
+            </div>
+        </div>
+    </section> *@
+    <footer class="footer_section">
+        <div class="doyou_still_main">
+            <div class="container">
+                <div class="doyou_still">
+                    <div class="doyou_stillleft">
+                        <h5>Do you still have a question related to our services?</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat elementum tempor, Duis porta lectus ut dui.</p>
+                    </div>
+                    <div class="doyou_stillright"><a href="#">Contact Us</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer_main">
+            <div class="container">
+                <div class="row gy-3">
+                    <div class="col-md-4">
+                        <div class="footer_contact">
+                            <img src="/assetsfe/images/footer_logo.png">
+                            <ul>
+                                <li>
+                                    <div class="contact_icon"><i class="bi bi-geo-alt"></i></div><div class="contect_text">
+                                        Plot No - 17, Ahimsa Khand 1,<br>
+                                        Indrapurm Ghaziabad (UP) - 201014
+                                    </div>
+                                </li>
+                                <li><div class="contact_icon"><i class="bi bi-envelope"></i></div> <div class="contect_text"><a href="mailto:support@synergyseastar.in">support@synergyseastar.in</a></div></li>
+                                <li><div class="contact_icon"><i class="bi bi-whatsapp"></i></div> <div class="contect_text"><a href="tel:918800963349">+91-8800963349</a> (WhatsApp Message Only)</div></li>
+                                <li><div class="contact_icon"><i class="bi bi-clock-history"></i></div> <div class="contect_text">Monday to Saturday between 9 a.m. and 5 p.m IST</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer_quicklink">
+                            <h5>Quick Links</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Products</a></li>
+                                <li><a href="#">Documents </a></li>
+                                <li><a href="#">Model Question Papers</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer_quicklink">
+                            <h5>PRODUCTS</h5>
+                            <ul>
+                                <li><a href="#">Skill Test, AI based online test</a></li>
+                                <li><a href="#">Maritime Interview & Pressure Testing</a></li>
+                                <li><a href="#">Mock Interviews</a></li>
+                                <li><a href="#">CV Review and Initial Assessment</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="footer_quicklink">
+                            <h5>OUR TEAM</h5>
+                            <ul>
+                                <li><a href="#">Master Mariners</a></li>
+                                <li><a href="#">Chief Engineers</a></li>
+                                <li><a href="#">Educationists</a></li>
+                                <li><a href="#">IT Professionals</a></li>
+                                <li><a href="#">MBAs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy_mainsection">
+            <div class="container">
+                <div class="copy_main">
+                    <div class="copy_mainleft"><p>© Copyright 2024. Seastar Consultancy. All Rights Reserved.</p></div>
+                    <div class="copy_mainright">
+                        <ul class="footer_menu">
+                            <li><a href="#">Sitemap
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="~/assetsfe/js/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="~/assetsfe/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assetsfe/js/stellarnav.min.js"></script>
+    @* <script src="~/assetsfe/js/owl.carousel.js"></script> *@
+    <script src="@Url.Content("~/assetsfe/js/owl.carousel.js")"></script>
+    <script src="~/assetsfe/js/custom.js"></script>
+</body>
+</html>

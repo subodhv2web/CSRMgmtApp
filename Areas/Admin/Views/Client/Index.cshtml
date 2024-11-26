@@ -1,0 +1,92 @@
+﻿@using CSRMGMT.Models
+@model IEnumerable<Client>
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Manage Clients";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">Manage Clients</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    <div class="nk-block nk-block-lg">
+        <div class="card card-bordered card-preview">
+            <div class="card-inner">
+                <div class="row gy-4 pb-3">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a asp-controller="Client" asp-action="Create" class="btn badge-primary">Create Client</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="accordion-1" class="accordion accordion-s2">
+                    <table class="datatable-init-export table table-tranx table_custom table-bordered " data-export-title="Export">
+                        <thead>
+                            <tr class="tb-tnx-head">
+                                <th>Company Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip Code</th>
+                                <th>Phone No</th>
+                                <th>Email</th>
+                                <th>Website</th>
+                                <th>Client Type</th>
+                                <th>SPOC Name</th>
+                                <th>SPOC Contact No.</th>
+                                <th>SPOC Email</th>
+                                <th>Created On</th>
+                                <th>Is Active?</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.CompanyName</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.City</td>
+                                        <td>@item.State</td>
+                                        <td>@item.PostalCode</td>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Website</td>
+                                        <td>@item.ClientType</td>
+                                        <td>@item.SPOCName</td>
+                                        <td>@item.SPOCPhoneNumber</td>
+                                        <td>@item.SPOCEmail</td>
+                                        <td>@string.Format("{0:dd'/'MM'/'yyyy}", item.CreatedDate)</td>
+
+                                        <td>
+                                            @if (item.IsActive == "true")
+                                            {
+                                                <span class="text text-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text text-danger">Inactive</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <ul class="action_list p-0 d-flex">
+                                                <li><a asp-controller="Client" asp-action="Edit" asp-route-id="@item.Id" class="bg-secondary"><i class="bi bi-pencil-square"></i></a></li>
+                                                <li><a onclick="return confirm('Are you sure to delete this record?');" asp-controller="Client" asp-action="Delete" asp-route-id="@item.Id" class="bg-danger"><i class="bi bi-trash"></i></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

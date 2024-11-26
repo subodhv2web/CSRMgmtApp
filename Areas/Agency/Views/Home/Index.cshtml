@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Areas/Agency/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h4 class="nk-block-title page-title">Dashboard</h4>
+            </div><!-- .nk-block-head-content -->
+        </div><!-- .nk-block-between -->
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-info text-center">
+                <div class="card-body">
+                    <i class="fas fa-calendar-alt icon"></i>
+                    <h5 class="card-title">Planned Projects</h5>
+                    <p class="card-text" id="plannedCount">10</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning text-center">
+                <div class="card-body">
+                    <i class="fas fa-spinner icon"></i>
+                    <h5 class="card-title">In Progress Projects</h5>
+                    <p class="card-text" id="inProgressCount">5</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success text-center">
+                <div class="card-body">
+                    <i class="fas fa-check-circle icon"></i>
+                    <h5 class="card-title">Completed Projects</h5>
+                    <p class="card-text" id="completedCount">15</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

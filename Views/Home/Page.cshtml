@@ -1,0 +1,34 @@
+﻿@model LinksInfo
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Seastar";
+}
+<section class="home_slider inner_slider">
+    <div class="owl-carousel fullslide owl-theme">
+        <div class="item">
+            <div class="home_slide">
+                <img src="/assetsfe/images/inner_ban.png" alt="">
+                <div class="capction inner_cap">
+                    <h1>@ViewBag.PageTitle</h1>
+                    <div class="bredcrumsec">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.PageTitle</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about_section about_bg pt-60 pb-60">
+    <div class="home_innerpage">
+        <div class="container">
+            <p>
+                @Html.Raw(ViewBag.PageContent)
+            </p>
+        </div>
+    </div>
+</section>

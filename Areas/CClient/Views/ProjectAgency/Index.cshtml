@@ -1,0 +1,104 @@
+﻿@using CSRMGMT.Models
+@model IEnumerable<ProjectAgency>
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/CClient/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Manage Clients";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">Manage Projects</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    <div class="nk-block nk-block-lg">
+        <div class="card card-bordered card-preview">
+            <div class="card-inner">
+                <div class="row gy-4 pb-3">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a asp-controller="ProjectAgency" asp-action="Create" class="btn badge-primary">New Agency</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="accordion-1" class="accordion accordion-s2">
+                    <table class="datatable-init-export table table-tranx table_custom table-bordered " data-export-title="Export">
+                        <thead>
+                            <tr class="tb-tnx-head">
+                                <th>Agency Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Postal Code</th>
+                                <th>Contact Number</th>
+                                <th>Email</th>
+                                <th>Established Date</th>
+                                <th>Description</th>
+                                <th>Spoc Name</th>
+                                <th>Spoc Position</th>
+                                <th>Spoc Phone</th>
+                                <th>Spoc Email</th>
+                                <th>Status?</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.City</td>
+                                        <td>@item.State.StateName</td>
+                                        <td>@item.PostalCode</td>
+                                        <td>@item.ContactNumber</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.EstablishedDate.ToString().Replace("00:00:00", string.Empty)</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.SpocName</td>
+                                        <td>@item.SpocPosition</td>
+                                        <td>@item.SpocContactNumber</td>
+                                        <td>@item.SpocEmail</td>
+                                        <td>
+                                            @if (item.IsActive)
+                                            {
+                                                <span class="text text-success"> Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text text-danger">Inactive</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <ul class="action_list p-0 d-flex">
+                                                <li>
+                                                    @if (item.IsActive)
+                                                    {
+                                                        <a onclick="return confirm('Are you sure to make Inactive status?');" asp-controller="ProjectAgency" title="Make Inactive Project Agency" asp-action="Delete" asp-route-id="@item.Id" class="bg-danger">
+                                                            <em class="icon ni ni-minus-round-fill"></em>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a onclick="return confirm('Are you sure to make Active status?');" asp-controller="ProjectAgency" title="Make Active Project Agency" asp-action="Delete" asp-route-id="@item.Id" class="bg-success">
+                                                            <em class="icon ni ni-check-round-fill"></em>
+                                                        </a>
+                                                    }
+                                                </li>
+
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

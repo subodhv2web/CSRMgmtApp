@@ -1,0 +1,124 @@
+﻿@using CSRMGMT.Models
+@model CsrProject
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/CClient/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Edit Project";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">Edit Project</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    <div class="card card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <div class="row gy-4">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a asp-controller="Project" asp-action="Index" class="btn badge-primary">View List</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <form asp-controller="Project" asp-action="Edit" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="FilePath" />
+                            <div class="row gy-3">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Project Name </label>
+                                    <div class="form-control-wrap">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input asp-for="ProjectName" class="form-control" placeholder="Project Name" maxlength="250" />
+                                        <span asp-validation-for="ProjectName" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Description</label>
+                                    <div class="form-control-wrap">
+                                        <textarea asp-for="Description" class="form-control" placeholder="Description" maxlength="5000"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Start Date</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="StartDate" type="date" class="form-control" placeholder="Start Date" />
+                                        <span asp-validation-for="StartDate" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">End Date</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="EndDate" type="date" class="form-control" placeholder="End Date" />
+                                        <span asp-validation-for="EndDate" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Project Status</label>
+                                    <div class="form-control-wrap">
+                                        <select asp-for="Status" class="form-control">
+                                            <option value="Planned">Planned</option>
+                                            <option value="Ongoing">Ongoing</option>
+                                            <option value="Complete">Complete</option>
+                                        </select>
+                                        <span asp-validation-for="Status" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Budget</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="Budget" type="number" class="form-control" placeholder="Budget" maxlength="20" />
+                                        <span asp-validation-for="Budget" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Contact Name</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="ContactPerson" class="form-control" placeholder="Name" maxlength="100" />
+                                        <span asp-validation-for="ContactPerson" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Contact Phone</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="ContactPhone" class="form-control" placeholder="ContactNo" maxlength="50" />
+                                        <span asp-validation-for="ContactPhone" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Contact Email</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="ContactEmail" class="form-control" placeholder="Contact Email" maxlength="255" />
+                                        <span asp-validation-for="ContactEmail" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Location</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="Location" class="form-control" placeholder="Location" maxlength="255" />
+                                        <span asp-validation-for="Location" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">File Upload</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="FileUpload" type="file" class="form-control" placeholder="File Upload" /> <a href="~/@Model.FilePath" target="_blank" ><em class="icon ni ni-download"></em></a>
+                                            
+                                        <span asp-validation-for="FileUpload" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

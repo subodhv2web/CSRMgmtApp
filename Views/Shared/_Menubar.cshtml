@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CSRMGMT.Models.MenuSubMenu>
+
+
+<div class="menu_main">
+    <div class="stellarnav">
+        <ul>
+            @foreach (var item in Model.ToList())
+            {
+                <li>
+                    @if (item.hasSubmenu == 1)
+                    {
+                        <a href="Javascript:void(0)">@item.sLinkName</a>
+                        <ul>
+                            @foreach (var sm in item.Submenu)
+                            {
+                                if (sm.UseURL)
+                                {
+                                    <li><a href="@sm.UseURL">@Html.DisplayFor(modelItem => sm.sLinkName)</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="~/pages/@AppHelper.GenerateSlug(sm.sLinkName)/@sm.sLinkID">@Html.DisplayFor(modelItem => sm.sLinkName)</a></li>
+                                }
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        if (item.UseURL)
+                        {
+                            <a href="@item.ExURL">@item.sLinkName</a>
+                        }
+                        else
+                        {
+                            <a href="~/pages/@item.slug/@item.sLinkID">@item.sLinkName</a>
+                        }
+                        
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+</div>

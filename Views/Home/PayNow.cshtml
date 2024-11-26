@@ -1,0 +1,44 @@
+﻿@model Dictionary<string, string>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<section class="home_slider inner_slider">
+    <div class="owl-carousel fullslide owl-theme">
+        <div class="item">
+            <div class="home_slide">
+                <img src="/assetsfe/images/inner_ban.png" alt="">
+                <div class="capction inner_cap">
+                    <h1>@ViewBag.PageTitle</h1>
+                    <div class="bredcrumsec">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.PageTitle</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about_section about_bg pt-60 pb-60">
+    <div class="home_innerpage">
+        <div class="container">
+            @ViewBag.Params
+            <form id="paymentForm" method="post" action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+                @foreach (var param in ViewData["PaymentParams"] as Dictionary<string, string>)
+                {
+                    <p><input type="text" class="form-control" name="@param.Key" value="@param.Value" /></p>
+                }
+                <input type="submit" value="Pay Now" class="btn btn-primary" />
+            </form>
+
+            <script>
+                // document.getElementById('paymentForm').submit();
+            </script>
+        </div>
+    </div>
+</section>

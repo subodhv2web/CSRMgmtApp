@@ -1,0 +1,141 @@
+﻿@using CSRMGMT.Models
+@model CsrProject
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/CClient/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "View Project";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">View Project</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    @if(ViewBag.Message!=null)
+    {
+        <div class="alert alert-success">@ViewBag.Message</div>
+    }
+    <div class="card card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <div class="row gy-4">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <!-- Allocate Button -->
+                            @if (ViewBag.Message == null)
+                            {
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#allocateModal">Allocate</button>
+                            }
+                            <a asp-controller="Project" asp-action="Index" class="btn badge-primary">View List</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row gy-3">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <td>@Model.ProjectName</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>@Model.Description</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Start Date</th>
+                                        <td>@string.Format("{0:dd/MM/yyyy}", Model.StartDate)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>End Date</th>
+                                        <td>
+                                            @(Model.EndDate.HasValue
+                                                ? string.Format("{0:yyyy-MM-dd}", Model.EndDate.Value)
+                                                : "Not set")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Project Status</th>
+                                        <td>@Model.Status</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Budget</th>
+                                        <td>@Model.Budget</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Name</th>
+                                        <td>@Model.ContactPerson</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Phone</th>
+                                        <td>@Model.ContactPhone</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Email</th>
+                                        <td>@Model.ContactEmail</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Location</th>
+                                        <td>@Model.Location</td>
+                                    </tr>
+                                    <tr>
+                                        <th>File Upload</th>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(Model.FilePath))
+                                            {
+                                                <a href="~/@Model.FilePath" target="_blank">
+                                                    <em class="icon ni ni-download"></em> Download
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <p>No file uploaded</p>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Content Code -->
+<div class="modal fade" tabindex="-1" id="allocateModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                <em class="icon ni ni-cross"></em>
+            </a>
+            <div class="modal-header">
+                <h5 class="modal-title">Allocate Agency</h5>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AllocateAgency" asp-controller="Project" method="post">
+                    <div class="form-group">
+                        <label for="agencyDropdown" class="form-label">Select Agency</label>
+                        <select id="agencyDropdown" name="AgencyId" class="form-control">
+                            <option value="">-- Select Agency --</option>
+                            @foreach (var agency in (IEnumerable<SelectListItem>)ViewBag.Agencies)
+                            {
+                                <option value="@agency.Value">@agency.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <input type="hidden" name="ProjectId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary" formaction="@Url.Action("AllocateAgency", "Project")">Allocate</button>
+                </form>
+            </div>
+            @* <div class="modal-footer bg-light">
+            <span class="sub-text">Modal Footer Text</span>
+            </div> *@
+        </div>
+    </div>
+</div>

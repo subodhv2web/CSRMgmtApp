@@ -1,0 +1,93 @@
+﻿@using CSRMGMT.Models
+@model dynamic
+@* @model IEnumerable<CsrProject> *@
+
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/Agency/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Manage Clients";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">My Projects</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    <div class="nk-block nk-block-lg">
+        <div class="card card-bordered card-preview">
+            <div class="card-inner">
+                @* <div class="row gy-4 pb-3">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a asp-controller="Project" asp-action="Create" class="btn badge-primary">New Project</a>
+                        </div>
+                    </div>
+                </div> *@
+                <div id="accordion-1" class="accordion accordion-s2">
+                    <table class="datatable-init-export table table-tranx table_custom table-bordered " data-export-title="Export">
+                        <thead>
+                            <tr class="tb-tnx-head">
+                                <th>Project Name</th>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Budget</th>
+                                <th>Location</th>
+                                <th>File Upload</th>
+                                <th>Contact Person</th>
+                                <th>Contact Phone</th>
+                                <th>Contact Email</th>
+                                <th>Status?</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><b>@item.ProjectName</b></td>
+                                        <td>@item.CategoryName</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.StartDate.ToString().Replace("00:00:00", string.Empty)</td>
+                                        <td>@Convert.ToString(item.EndDate).Replace("00:00:00", string.Empty)</td>
+                                        <td>@item.Budget</td>
+                                        <td>@item.Location</td>
+                                        <td><a href="~/@item.FilePath" target="_File"><em class="icon ni ni-download"></em></a></td>
+                                        <td>@item.ContactPerson</td>
+                                        <td>@item.ContactPhone</td>
+                                        <td>@item.ContactEmail</td>
+                                        <td>
+                                            @if (item.Status == "Planned")
+                                            {
+                                                <span class="text text-primary">@item.Status</span>
+                                            }
+                                            else if (item.Status == "Complete")
+                                            {
+                                                <span class="text text-success">@item.Status</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text text-info">@item.Status</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <ul class="action_list p-0 d-flex">
+                                                <li><a asp-controller="Project" asp-action="Details" asp-route-id="@item.Id" class="bg-primary" title="Project details"><em class="icon ni ni-eye-alt-fill"></em></a></li>
+                                                <li><a asp-controller="Project" asp-action="Milestone" asp-route-pid="@item.Id" class="bg-warning" title="Add Milestone"><em class="icon ni ni-layers-fill"></em></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

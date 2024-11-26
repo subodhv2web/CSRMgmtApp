@@ -1,0 +1,193 @@
+﻿@using CSRMGMT.Models
+@model IEnumerable<CSRMGMT.Areas.Admin.ViewModels.LinksInfoViewModel>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Manage Pages</h3>
+                            <p>List of all pages.</p>
+                        </div><!-- .nk-block-head-content -->
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-inner">
+                                <table class="datatable-init nk-tb-list table_custom nk-tb-ulist" data-auto-responsive="false">
+                                    <thead>
+                                        <tr class="nk-tb-item nk-tb-head">
+
+                                            <th class="nk-tb-col"><span class="sub-text">ID</span></th>
+                                            
+                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Page Title</span></th>
+                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Section</span></th>
+                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Last Update</span></th>
+                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
+                                            <th class="nk-tb-col nk-tb-col-tools">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="nk-tb-item">
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <span> @Html.DisplayFor(modelItem => item.sLinkID)</span>
+                                                </td>
+                                               
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <span><b> @Html.DisplayFor(modelItem => item.sLinkName)</b></span>
+                                                </td>
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <span> @Html.DisplayFor(modelItem => item.linkType)</span>
+                                                </td>
+                                                
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <span> @Html.DisplayFor(modelItem => item.LinkLastUpdate)</span>
+                                                </td>
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <span class="tb-status @item.sLinkStatusClass"> @Html.DisplayFor(modelItem => item.sLinkStatus)</span>
+                                                </td>
+                                                <td class="nk-tb-col nk-tb-col-md">
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+
+                                                                <li><a href="~/admin/cms/editpage/@item.sLinkID.ToString()"><em class="icon ni ni-pen-fill"></em><span>Edit</span></a></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr><!-- .nk-tb-item  -->
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.sLinkName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParentLinkID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UseURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkContents)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsLinkActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InNewWindow)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkCreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkLastUpdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WindowTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MetaKeywords)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MetaDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkTypes)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sLinkName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParentLinkID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UseURL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExURL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkContents)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsLinkActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InNewWindow)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkCreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkLastUpdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WindowTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MetaKeywords)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MetaDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkTypes.LinkTypeId)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

@@ -1,0 +1,147 @@
+﻿@using CSRMGMT.Models
+@model ProjectAgency
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+@{
+    Layout = "~/Areas/CClient/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Create New Project Agency";
+}
+
+<div class="nk-block-head nk-block-head-lg wide-sm">
+    <div class="nk-block-head-content">
+        <h2 class="nk-block-title fw-normal">Update Project Agency</h2>
+    </div>
+</div><!-- .nk-block-head -->
+<div class="nk-block nk-block-lg">
+    @if(TempData["ErrorMessages"]!=null)
+    {
+        <div class="alert alert-danger">@Html.Raw(TempData["ErrorMessages"] )</div >
+    }
+    <div class="card card-preview">
+        <div class="card-inner">
+            <div class="preview-block">
+                <div class="row gy-4">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a asp-controller="ProjectAgency" asp-action="Index" class="btn badge-primary">View List</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <form asp-controller="ProjectAgency" asp-action="Edit"  >
+                            <div class="row gy-3">
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Agency Name </label>
+                                    <div class="form-control-wrap">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input asp-for="Name" class="form-control" placeholder="Agency Name" maxlength="250" />
+                                        <span asp-validation-for="Name" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Address</label>
+                                    <div class="form-control-wrap">
+                                        <textarea asp-for="Address" class="form-control" placeholder="Address" maxlength="500"></textarea>
+                                        <span asp-validation-for="Address" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">City</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="City" class="form-control" placeholder="City" maxlength="100"></input>
+                                        <span asp-validation-for="City" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">State</label>
+                                    <div class="form-control-wrap">
+                                        <select asp-for="StateId" class="form-control" asp-items="@(ViewData["StateList"] as IEnumerable<SelectListItem>)"></select>
+                                        <span asp-validation-for="StateId" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Postal Code</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="PostalCode" class="form-control" placeholder="PostalCode" maxlength="15">
+                                        <span asp-validation-for="PostalCode" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Contact Number</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="ContactNumber" class="form-control" placeholder="ContactNumber" maxlength="15"></input>
+                                        <span asp-validation-for="ContactNumber" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Email</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="Email" class="form-control" placeholder="ContactNumber" maxlength="250"></input>
+                                        <span asp-validation-for="Email" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Established Date</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="EstablishedDate" type="date" class="form-control" placeholder="Established Date" />
+                                        <span asp-validation-for="EstablishedDate" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Description</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="Description" class="form-control" placeholder="Description" maxlength="500"></input>
+                                        <span asp-validation-for="Description" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Spoc Name</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="SpocName" class="form-control" placeholder="SpocName" maxlength="100"></input>
+                                        <span asp-validation-for="SpocName" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Spoc Position</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="SpocPosition" class="form-control" placeholder="SpocName" maxlength="100"></input>
+                                        <span asp-validation-for="SpocPosition" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Spoc Contact Number</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="SpocContactNumber" class="form-control" placeholder="Spoc Contact Number" maxlength="15"></input>
+                                        <span asp-validation-for="SpocContactNumber" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label required" for="default-01">Spoc Email</label>
+                                    <div class="form-control-wrap">
+                                        <input asp-for="SpocEmail" class="form-control" placeholder="Spoc Email" maxlength="250"></input>
+                                        <span asp-validation-for="SpocEmail" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="form-label" for="default-01">Is Active</label>
+                                    <div class="form-control-wrap">
+                                        <select asp-for="IsActive" class="form-control">
+                                            <option value="True">Active</option>
+                                            <option value="False">Inactive</option>
+                                        </select>
+                                        <span asp-validation-for="IsActive" class="text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
