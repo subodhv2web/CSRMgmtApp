@@ -9,6 +9,9 @@ namespace CSRMGMT
         //New changes in this file.
         //Changes done GIT HUB URL
         //Added for new branch subodh
+        /// <summary>
+        /// yjtyujtyuty
+        /// </summary>
         private const int MaxSlugLength = 50;
         public static string GenerateSlug(string title)
         {
