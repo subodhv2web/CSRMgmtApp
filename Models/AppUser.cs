@@ -6,6 +6,9 @@ namespace CSRMGMT.Models
 {
     public class AppUser:IdentityUser
     {
+        /// <summary>
+        /// Not to commit
+        /// </summary>
         [StringLength(150)]
         public string? Name { get; set; }
 
