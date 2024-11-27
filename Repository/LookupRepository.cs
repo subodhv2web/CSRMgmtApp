@@ -19,6 +19,7 @@ namespace CSRMGMT.Repository
         }
         public async Task<IEnumerable<ListValueModel>> GetProjectCategory()
         {
+
             return await (from i in _dbContext.LookupMaster
                           where i.IsActive == true && i.MasterName == "ProjectCategory"
                           select new ListValueModel { ID = i.Id, Name = i.Name, Description = "" }
