@@ -6,6 +6,7 @@ namespace CSRMGMT
 {
     public static class AppHelper
     {
+        //New changes in this file.
         private const int MaxSlugLength = 50;
         public static string GenerateSlug(string title)
         {
@@ -13,7 +14,7 @@ namespace CSRMGMT
             {
                 return string.Empty;
             }
-
+            
             // Convert to lowercase
             string slug = title.ToLowerInvariant();
 
